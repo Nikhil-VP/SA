@@ -17,7 +17,7 @@ language = st.sidebar.selectbox("Select Language", ["English", "Hindi", "Spanish
 
 # Display a message based on the selected language
 if language == "English":
-    st.write("Welcome to the Hospital Navigation system ")
+    st.write("Welcome to the Hospital Navigation system in")
 elif language == "Hindi":
     st.write("अस्पताल नेविगेशन सिस्टम में आपका स्वागत है।")
 elif language == "Spanish":
