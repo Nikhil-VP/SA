@@ -11,6 +11,9 @@ client = MongoClient(uri)
 db = client["PatientData"]  # Database name
 collection = db["patients"]  # Collection name
 
+# Add a new collection for calls
+calls_collection = db['calls']
+
 def generate_uhid():
     # Generate a timestamp-based prefix (YYYYMMDD)
     timestamp = datetime.now().strftime('%Y%m%d')
