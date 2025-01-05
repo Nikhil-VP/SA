@@ -32,7 +32,7 @@ def display_map():
     )
 
     # Create the base map
-    m = folium.Map(location=[22.7196, 75.8577], zoom_start=13)
+    m = folium.Map(location=[12.92374198264633, 77.49863482253105], zoom_start=13)
 
     # Add the location search control
     plugins.LocateControl().add_to(m)
