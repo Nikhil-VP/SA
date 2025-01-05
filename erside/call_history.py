@@ -1,14 +1,16 @@
 import streamlit as st
 import pandas as pd
+from pymongo import MongoClient
 
 def call_history_page():
     st.title("Call History")
     
-    # Placeholder for call history data
-    call_history_data = pd.DataFrame({
-        "Date": ["2024-01-01", "2024-01-02", "2024-01-03"],
-        "Patient Name": ["John Doe", "Jane Smith", "Michael Brown"],
-        "Diagnosis": ["Fever", "Back Pain", "Headache"],
-        "Duration (min)": [15, 20, 10]
-    })
+    # Connect to MongoDB
+    uri = "mongodb+srv://DTL:1234@patientdata.xxxos.mongodb.net/?retryWrites=true&w=majority&appName=Patientdata"
+    client = MongoClient(uri)
+    db = client.PatientData
+    calls_collection = db.calls
+
+    # Fetch call history data from MongoDB
+    call_history_data = pd.DataFrame(list(calls_collection.find()))
     st.dataframe(call_history_data, use_container_width=True)

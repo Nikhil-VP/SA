@@ -88,3 +88,22 @@ def patient_data_page():
                 st.success("Patient data has been saved successfully!")
             else:
                 st.error("Please fill in all fields before submitting.")
+
+def get_patient_info(patient_id):
+    """
+    Retrieve patient information from the database based on patient ID or name.
+    
+    Args:
+        patient_id (str): The ID or name of the patient to search for.
+    
+    Returns:
+        str: Patient information or a message if not found.
+    """
+    # Search for the patient by ID or name
+    patient = collection.find_one({"$or": [{"id": patient_id}, {"name": patient_id}]})
+    
+    if patient:
+        # Format the patient information as needed
+        return f"ID: {patient['id']}, Name: {patient['name']}, Age: {patient['age']}, Condition: {patient['condition']}"
+    else:
+        return None
